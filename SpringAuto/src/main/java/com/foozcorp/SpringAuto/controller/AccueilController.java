@@ -23,12 +23,12 @@ public class AccueilController {
 	@GetMapping("/accueil")
 	public String showAccueil() {
 
-		List<User> useList = userDao.findAll();
+		List<User> userList = userDao.findAll();
 		return "index";
 	}
 
-	@PostMapping("/signup")
-	public String showSignupForm() {
+	@GetMapping("/sign-up")
+	public String showSignupForm(User user) {
 		return "add-user";
 	}
 

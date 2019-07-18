@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="#" th:action="@{/addseance}" th:object="${seanceCode}" method="post">
+	   <label for="lieu">Lieu</label>
+	   <input type="text" th:field="*{lieu}" id="lieu" placeholder="lieu">
+	   <span th:if="${#fields.hasErrors('lieu')}" th:errors="*{lieu}"></span>
+	   <label for="nbrPlace">Nombre de place</label>
+	   <input type="text" th:field="*{nbrPlace}" id="nbrPlace" placeholder="nombre de place">
+	   <span th:if="${#fields.hasErrors('nbrPlace')}" th:errors="*{nbrPlace}"></span>
+	   <label for="age">Nom</label>
+	   <input type="text" th:field="*{nom}" id="nom" placeholder="nom">
+	   <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></span>
+	   <input type="submit" value="Add Session">
+	</form>	
+</body>
+</html>
