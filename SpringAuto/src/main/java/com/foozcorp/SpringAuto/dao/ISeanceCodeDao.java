@@ -10,5 +10,5 @@ import com.foozcorp.SpringAuto.models.SeanceCode;
 @Repository
 public interface ISeanceCodeDao extends JpaRepository<SeanceCode, Long> {
 
-	public Optional<SeanceCode> findAllSeanceCode(String lieu);
+	public Optional<SeanceCode> findAllByLieu(String lieu);
 }

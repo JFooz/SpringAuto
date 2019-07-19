@@ -1,9 +1,15 @@
 package com.foozcorp.SpringAuto.models;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -32,6 +38,10 @@ public class SeanceCode extends AuditModel {
 
 	@NotNull
 	private String nom;
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "user_seances", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "seance_id"))
+	private List<User> userList;
 
 	public SeanceCode() {
 	}

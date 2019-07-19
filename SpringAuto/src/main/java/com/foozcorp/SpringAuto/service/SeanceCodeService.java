@@ -16,6 +16,7 @@ public class SeanceCodeService {
 	@Autowired
 	private ISeanceCodeDao seanceCodeDao;
 
+	// Ajouté dans le controller
 	public List<SeanceCode> getAllSeance() {
 		return seanceCodeDao.findAll();
 	}
@@ -24,6 +25,7 @@ public class SeanceCodeService {
 		return seanceCodeDao.save(seanceCode);
 	}
 
+	// Ajouter dans le controller
 	public SeanceCode getById(Long id) {
 		return seanceCodeDao.findById(id).orElseThrow(() -> new ResourceNotFoundException("SeanceCode", "id", id));
 
@@ -46,9 +48,9 @@ public class SeanceCodeService {
 
 	}
 
-	public SeanceCode findAllSeanceCode(String lieu) {
-		return seanceCodeDao.findAllSeanceCode(lieu)
+	public SeanceCode findAllByLieu(String lieu) {
+		return seanceCodeDao.findAllByLieu(lieu)
 				.orElseThrow(() -> new ResourceNotFoundException("SeanceCode", "lieu", lieu));
-
 	}
+
 }
