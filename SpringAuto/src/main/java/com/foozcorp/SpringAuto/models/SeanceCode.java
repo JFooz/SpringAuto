@@ -11,7 +11,12 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "seanceCode")
-public class SeanceCode {
+public class SeanceCode extends AuditModel {
+
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
