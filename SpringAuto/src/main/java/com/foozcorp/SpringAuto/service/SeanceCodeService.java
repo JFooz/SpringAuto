@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.foozcorp.SpringAuto.dao.ISeanceCodeDao;
+import com.foozcorp.SpringAuto.dao.IUserDao;
 import com.foozcorp.SpringAuto.exception.ResourceNotFoundException;
 import com.foozcorp.SpringAuto.models.SeanceCode;
 
@@ -15,6 +16,9 @@ public class SeanceCodeService {
 
 	@Autowired
 	private ISeanceCodeDao seanceCodeDao;
+
+	@Autowired
+	private IUserDao userDao;
 
 	// Ajouté dans le controller
 	public List<SeanceCode> getAllSeance() {
@@ -53,4 +57,12 @@ public class SeanceCodeService {
 				.orElseThrow(() -> new ResourceNotFoundException("SeanceCode", "lieu", lieu));
 	}
 
+	public SeanceCode addStudentInSeance(Long userId, Long seanceId) {
+		return userDao.findById(userId).map((user) -> {
+			return seanceCodeDao.findById(seanceId).map((seance) -> {
+				seance.getUserList().add(user);
+				return seanceCodeDao.save(seance);
+			}).orElseThrow(() -> new ResourceNotFoundException("seance", "id", seanceId));
+		}).orElseThrow(() -> new ResourceNotFoundException("user", "id", userId));
+	}
 }

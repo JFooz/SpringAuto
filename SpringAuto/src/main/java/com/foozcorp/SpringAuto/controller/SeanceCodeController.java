@@ -38,10 +38,10 @@ public class SeanceCodeController {
 		return seanceCode.saveSeanceCode(seance);
 	}
 
-	@PostMapping("{/userId}/seance-code/{id}")
-	public SeanceCode signInStudent(@PathVariable("userId") Long user, @PathVariable("id") Long id) {
+	@PostMapping("/{userId}/seance-code/{id}")
+	public SeanceCode signInStudent(@PathVariable("userId") Long userId, @PathVariable("id") Long id) {
 
-		return null;
+		return seanceCode.addStudentInSeance(userId, id);
 	}
 
 //	@GetMapping("/seanceList")

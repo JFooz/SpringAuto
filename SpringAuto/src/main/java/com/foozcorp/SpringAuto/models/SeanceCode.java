@@ -46,6 +46,14 @@ public class SeanceCode extends AuditModel {
 	public SeanceCode() {
 	}
 
+	public List<User> getUserList() {
+		return userList;
+	}
+
+	public void setUserList(List<User> userList) {
+		this.userList = userList;
+	}
+
 	public Long getId() {
 		return id;
 	}
